@@ -1,0 +1,17 @@
+const STORAGE_KEY='novaChannels';
+const DEFAULT_CHANNELS=[
+{id:1,name:'Nova News',category:'أخبار',icon:'📰',url:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',enabled:true},
+{id:2,name:'Nova Sports 1',category:'رياضة',icon:'⚽',url:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',enabled:true},
+{id:3,name:'Nova Cinema',category:'أفلام',icon:'🎬',url:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',enabled:true},
+{id:4,name:'Nova Kids',category:'أطفال',icon:'🧸',url:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',enabled:true}
+];
+const root=document.getElementById('adminApp');
+let channels=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null')||DEFAULT_CHANNELS;
+function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(channels));}
+function esc(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function addChannel(e){e.preventDefault();const f=new FormData(e.target);channels.push({id:Date.now(),name:f.get('name').trim(),category:f.get('category').trim(),icon:f.get('icon').trim()||'📺',url:f.get('url').trim(),enabled:true});persist();e.target.reset();render();}
+function removeChannel(id){channels=channels.filter(c=>c.id!==id);persist();render();}
+function toggleChannel(id){channels=channels.map(c=>c.id===id?{...c,enabled:!c.enabled}:c);persist();render();}
+function resetData(){channels=structuredClone(DEFAULT_CHANNELS);persist();render();}
+function render(){root.innerHTML=`<div class="shell admin-shell"><header class="topbar"><div class="brand">Nova <span>TV</span> <small>Admin</small></div><div class="nav"><a class="ghost link-btn" href="index.html">فتح التطبيق</a><button class="ghost" onclick="resetData()">استعادة التجريبي</button></div></header><main class="admin-main"><section class="admin-stats"><div class="stat"><strong>${channels.length}</strong><span>إجمالي القنوات</span></div><div class="stat"><strong>${channels.filter(c=>c.enabled).length}</strong><span>مفعلة</span></div><div class="stat"><strong>${new Set(channels.map(c=>c.category)).size}</strong><span>تصنيفات</span></div></section><section class="admin-layout"><form class="panel" onsubmit="addChannel(event)"><h2>إضافة قناة</h2><label>اسم القناة<input name="name" required placeholder="مثال: Nova Sports"></label><label>التصنيف<input name="category" required placeholder="رياضة"></label><label>الأيقونة<input name="icon" placeholder="⚽"></label><label>رابط البث<input name="url" type="url" required placeholder="https://...m3u8"></label><button class="primary" type="submit">حفظ القناة</button><p class="meta">استخدمي فقط روابط بث تملكين حق استخدامها.</p></form><section class="panel wide"><div class="section-head"><h2>إدارة القنوات</h2><span class="meta">التغييرات تظهر مباشرة في التطبيق على هذا الجهاز</span></div><div class="table-wrap"><table><thead><tr><th>القناة</th><th>التصنيف</th><th>الحالة</th><th>الإجراءات</th></tr></thead><tbody>${channels.map(c=>`<tr><td><span class="channel-icon">${esc(c.icon)}</span><strong>${esc(c.name)}</strong></td><td>${esc(c.category)}</td><td><span class="status ${c.enabled?'online':'offline'}">${c.enabled?'مفعلة':'موقفة'}</span></td><td><button class="ghost compact" onclick="toggleChannel(${c.id})">${c.enabled?'إيقاف':'تفعيل'}</button><button class="danger compact" onclick="removeChannel(${c.id})">حذف</button></td></tr>`).join('')}</tbody></table></div></section></section></main></div>`;}
+window.addChannel=addChannel;window.removeChannel=removeChannel;window.toggleChannel=toggleChannel;window.resetData=resetData;render();
