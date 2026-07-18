@@ -1,0 +1,35 @@
+/* Nova TV 1.0 RC — compact 16:9 television layout */
+@media (min-width: 1100px){
+  .topbar{height:72px;padding-inline:32px}
+  .cinema-hero{min-height:360px;height:min(42vh,410px);margin:20px 34px 8px;padding:38px 52px;border-radius:30px}
+  .hero-copy h1{font-size:clamp(44px,5vw,66px);margin:8px 0 10px}
+  .hero-copy p{font-size:17px;line-height:1.65;margin:0;max-width:620px}
+  .hero-tags{margin-top:12px}.hero-actions{margin-top:20px}
+  .logo-tile.large{width:210px;height:210px;border-radius:44px}.logo-tile.large span{font-size:30px}
+  .channel-logo.large{max-width:220px;max-height:180px}
+  .discover{padding:14px 34px 8px}
+  .discover .section-head h2{font-size:25px}
+  .chips{margin-top:12px}
+  .quick-strip{display:none!important}
+  .home-first-row{padding-top:8px!important}
+  .content-row{padding-top:14px;padding-bottom:18px}
+  .row-head h2{font-size:24px}
+  .rail{padding-top:12px;grid-auto-columns:minmax(245px,278px);gap:16px}
+  .poster{height:145px}
+  .card-body{padding:13px 15px}.card-title{font-size:16px}.now-line{margin-top:7px}
+}
+@media (min-width:1100px) and (max-height:820px){
+  .topbar{height:66px}
+  .cinema-hero{height:330px;min-height:330px;margin-top:14px;padding:30px 46px}
+  .hero-copy h1{font-size:54px}.hero-copy p{font-size:16px}
+  .logo-tile.large{width:180px;height:180px}.logo-tile.large span{font-size:27px}
+  .discover{padding-top:10px}.chips{margin-top:9px}
+  .home-first-row{padding-top:4px!important}
+  .rail{padding-top:8px}.poster{height:130px}
+}
+.card .now-line{position:relative;padding-top:8px;margin-top:8px}
+.card .now-line:before{content:"";position:absolute;top:0;right:0;left:0;height:3px;border-radius:99px;background:rgba(255,255,255,.09)}
+.card .now-line:after{content:"";position:absolute;top:0;right:0;width:42%;height:3px;border-radius:99px;background:linear-gradient(90deg,#168cff,#6b4cff)}
+.tv-focus:focus,.tv-focus:hover{outline:4px solid #fff!important;box-shadow:0 0 0 5px #168cff,0 25px 60px rgba(0,0,0,.55)!important}
+.hero-dots{direction:ltr}
+.rc-clock{font-variant-numeric:tabular-nums;color:#9fb4cf;font-weight:700;font-size:13px;margin-inline-start:8px}
