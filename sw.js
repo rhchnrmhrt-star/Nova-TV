@@ -1,4 +1,4 @@
-const CACHE='nova-tv-v10-rc';
+const CACHE='nova-tv-v11-rc-hotfix';
 const ASSETS=['./','./index.html','./admin.html','./style.css','./tv-09.css','./rc.css','./api.js','./app.js','./rc.js','./admin.js','./manifest.json','./icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
