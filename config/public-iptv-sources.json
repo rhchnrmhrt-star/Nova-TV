@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "updatedBy": "Nova TV",
+  "policy": {
+    "publicStreamsOnly": true,
+    "allowUserProvidedSources": false,
+    "notes": "Only public/free-to-air playlists are enabled. Paid or protected channels must not be added without a distribution licence."
+  },
+  "sources": [
+    {"id":"sa","nameAr":"السعودية","nameEn":"Saudi Arabia","country":"SA","url":"https://iptv-org.github.io/iptv/countries/sa.m3u","enabled":true,"priority":1},
+    {"id":"ae","nameAr":"الإمارات","nameEn":"United Arab Emirates","country":"AE","url":"https://iptv-org.github.io/iptv/countries/ae.m3u","enabled":true,"priority":2},
+    {"id":"kw","nameAr":"الكويت","nameEn":"Kuwait","country":"KW","url":"https://iptv-org.github.io/iptv/countries/kw.m3u","enabled":true,"priority":3},
+    {"id":"bh","nameAr":"البحرين","nameEn":"Bahrain","country":"BH","url":"https://iptv-org.github.io/iptv/countries/bh.m3u","enabled":true,"priority":4},
+    {"id":"qa","nameAr":"قطر","nameEn":"Qatar","country":"QA","url":"https://iptv-org.github.io/iptv/countries/qa.m3u","enabled":true,"priority":5},
+    {"id":"om","nameAr":"عُمان","nameEn":"Oman","country":"OM","url":"https://iptv-org.github.io/iptv/countries/om.m3u","enabled":true,"priority":6},
+    {"id":"eg","nameAr":"مصر","nameEn":"Egypt","country":"EG","url":"https://iptv-org.github.io/iptv/countries/eg.m3u","enabled":true,"priority":7},
+    {"id":"jo","nameAr":"الأردن","nameEn":"Jordan","country":"JO","url":"https://iptv-org.github.io/iptv/countries/jo.m3u","enabled":true,"priority":8},
+    {"id":"lb","nameAr":"لبنان","nameEn":"Lebanon","country":"LB","url":"https://iptv-org.github.io/iptv/countries/lb.m3u","enabled":true,"priority":9},
+    {"id":"ma","nameAr":"المغرب","nameEn":"Morocco","country":"MA","url":"https://iptv-org.github.io/iptv/countries/ma.m3u","enabled":true,"priority":10}
+  ]
+}
